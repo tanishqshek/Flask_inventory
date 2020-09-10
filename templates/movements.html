@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} Movements {% endblock %}
+
+{% block body %}
+<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Movements</h2>
+<div class="container">
+    
+    <form action="/movements" method="post">
+        <div class="row">
+            <div class="form-group col">
+                <label for="from-location">From :</label>
+                <select name="from-location" id="from-location" class="form-control">
+                    <option value="none">None</option>
+                    {% for location in locations %}
+                    <option value="{{location[0]}}">{{location[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="to-location">To :</label>
+                <select name="to-location" id="to-location" class="form-control">
+                    <option value="none">None</option>
+                    {% for location in locations %}
+                    <option value="{{location[0]}}">{{location[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col">
+                <label for="product">Product: </label>
+                <select name="product" id="product" class="form-control">
+                    {% for product in products %}
+                    <option value="{{ product[0] }}">{{product[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" class="form-control" min="1">
+            </div>
+        </div>
+        <input type="submit" value="Add movement" class="form-control btn btn-primary">
+    </form>
+
+    {% if movements|length < 1%}
+    <h4>No movements yet</h4>
+    {% else %}
+    <hr>
+    <h2>
+        Movements History
+    </h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <th>ID</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </thead>
+        {% for movement in movements %}
+        <tr>
+            <td>{{movement[0]}}</td>
+            <td>{{movement[6]}}</td>
+            <td>{{movement[4]}}</td>
+            <td>{{movement[2]}}</td>
+            <td>{{movement[7]}}</td>
+            <td>
+                <a href="/movements/{{movement[0]}}/update" class="btn btn-warning">Update</a>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{%endblock%}

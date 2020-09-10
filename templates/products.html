@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+
+{% block title %} Products {% endblock %}
+
+{% block body %}
+<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Products</h2>
+<div class="container">
+    
+    <form action="/products" method="post">
+        <div class="form-group">
+            <label for="product-name">
+                Product Name:
+            </label>
+            <input type="text" class="form-control" name="product-name" id="product-name" required>
+            <input type="submit" class="form-control btn-primary mt-2" value="Add product">
+        </div>
+    </form>
+    
+    {%if products|length < 1%}
+    <h4>No Products found please start by adding products above</h4>
+    {% else %}
+    <table class="table">
+        <thead class="thead thead-dark">
+            <div class="row">
+                <div class="col-4 self-align-center">
+            <th>
+                ID
+            </th>
+        </div>
+        <div class="col-4">
+            <th>
+                NAME
+            </th>
+        </div>
+        <div class="col-8">
+            <th>
+                ACTIONS
+            </th>
+        </div>
+        </div>
+        </thead>
+        {% for product in products %}
+        <tr>
+            <td>{{product[0]}}</td>
+            <td>{{product[1]}}</td>
+            <td>
+                <a href="/products/{{product[0]}}/update" class="btn btn-warning">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

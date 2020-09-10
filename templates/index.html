@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+{% block title %} Index {% endblock %}
+
+{% block body %}
+<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Inventory System</h2>
+
+<div class="container">
+    <centre>
+        <div class="row">
+        <div class="col-8 mx-auto"> 
+            <img src="{{ user_image }}" width="700px" height="180px" class="img-fluid" alt="logo" >
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <a href="/products" class="btn btn-primary col-6 m-3">Products</a>
+    </div>
+    <div class="row justify-content-center">
+        <a href="/locations" class="btn btn-secondary col-6 m-3">Locations</a>
+    </div>
+    <div class="row justify-content-center">
+        <a href="/movements" class="btn btn-warning col-6 m-3">Movements</a>
+    </div>
+    <div class="row justify-content-center">
+        <a href="/report" class="btn btn-danger col-6 m-3">Report</a>
+    </div>
+    </centre>
+</div>
+{% endblock %}
