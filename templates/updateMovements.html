@@ -1,48 +1,85 @@
-{% extends 'base.html' %}
-
-{% block title %} Movements {% endblock %}
-
-{% block body %}
-<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Update Movement : {{ movement[0] }}</h2>
+{% extends 'base.html' %} {% block title %} Movements {% endblock %} {% block
+body %}
+<h2
+  class="text-center"
+  style="background-color: black; padding: 20px 10px 20px 10px; color: white;"
+>
+  Update Movement : {{ movement[0] }}
+</h2>
 
 <div class="container">
-    
-    <form action="/movements" method="post">
-        <div class="row">
-            <div class="form-group col">
-                <label for="from-location">From location:</label>
-                <select name="from-location" id="from-location" class="form-control">
-                    <option value="none">None</option>
-                    {% for location in locations %}
-                    <option value="{{location[0]}}" {% if location[0] == movement[5]%}selected{% endif %}>{{location[1]}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="to-location">To location:</label>
-                <select name="to-location" id="to-location" class="form-control">
-                    <option value="none">None</option>
-                    {% for location in locations %}
-                    <option value="{{location[0]}}" {% if location[0] == movement[3]%}selected{% endif %}>{{location[1]}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col">
-                <label for="product">Product</label>
-                <select name="product" id="product" class="form-control">
-                    {% for product in products %}
-                    <option value="{{ product[0] }}" {% if product[0] == movement[1]%}selected{% endif %}>{{product[1]}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group col">
-                <label for="quantity">Quantity</label>
-                <input type="number" name="quantity" id="quantity" class="form-control" min="1" max="{{movement[7]}}" value="{{movement[7]}}">
-            </div>
-        </div>
-        <input type="submit" value="Update movement" class="form-control btn btn-primary">
-    </form>
+  <form action="/movements" method="post">
+    <div class="row">
+      <div class="form-group col">
+        <label for="from-location">From location:</label>
+        <select name="from-location" id="from-location" class="form-control">
+          <option value="none">None</option>
+          {% for location in locations %}
+          <option
+            value="{{location[0]}}"
+            {%
+            if
+            location[0]="movement[5]%}selected{%"
+            endif
+            %}
+            >{{location[1]}}</option
+          >
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="to-location">To location:</label>
+        <select name="to-location" id="to-location" class="form-control">
+          <option value="none">None</option>
+          {% for location in locations %}
+          <option
+            value="{{location[0]}}"
+            {%
+            if
+            location[0]="movement[3]%}selected{%"
+            endif
+            %}
+            >{{location[1]}}</option
+          >
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col">
+        <label for="product">Product</label>
+        <select name="product" id="product" class="form-control">
+          {% for product in products %}
+          <option
+            value="{{ product[0] }}"
+            {%
+            if
+            product[0]="movement[1]%}selected{%"
+            endif
+            %}
+            >{{product[1]}}</option
+          >
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group col">
+        <label for="quantity">Quantity</label>
+        <input
+          type="number"
+          name="quantity"
+          id="quantity"
+          class="form-control"
+          min="1"
+          max="{{movement[7]}}"
+          value="{{movement[7]}}"
+        />
+      </div>
+    </div>
+    <input
+      type="submit"
+      value="Update movement"
+      class="form-control btn btn-primary"
+    />
+  </form>
 </div>
 {%endblock%}

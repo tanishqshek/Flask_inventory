@@ -1,20 +1,30 @@
-{% extends 'base.html'%}
-
-{% block title %} Update Location {% endblock %}
-
-{% block body %}
-<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Update Location : {{location_name}}</h2>
+{% extends 'base.html'%} {% block title %} Update Location {% endblock %} {%
+block body %}
+<h2
+  class="text-center"
+  style="background-color: black; padding: 20px 10px 20px 10px; color: white;"
+>
+  Update Location : {{location_name}}
+</h2>
 <div class="container">
-
-    <form action="/locations/{{location_id}}/update" method="post">
-        <div class="form-group">
-            <label for="location-name">
-                New Location Name:
-            </label>
-            <input type="text" class="form-control" name="location-name" id="location-name" value="{{location_name}}">
-            <input type="submit" class="form-control btn-primary mt-2" value="Update location">
-        </div>
-    </form>
-    
+  <form action="/locations/{{location_id}}/update" method="post">
+    <div class="form-group">
+      <label for="location-name">
+        New Location Name:
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        name="location-name"
+        id="location-name"
+        value="{{location_name}}"
+      />
+      <input
+        type="submit"
+        class="form-control btn-primary mt-2"
+        value="Update location"
+      />
+    </div>
+  </form>
 </div>
 {% endblock %}

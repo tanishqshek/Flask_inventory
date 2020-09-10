@@ -1,24 +1,26 @@
-{% extends 'base.html' %}
-
-{% block title %} Report {% endblock %}
-{% block body %}
-<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Report</h2>
+{% extends 'base.html' %} {% block title %} Report {% endblock %} {% block body
+%}
+<h2
+  class="text-center"
+  style="background-color: black; padding: 20px 10px 20px 10px; color: white;"
+>
+  Report
+</h2>
 <div class="container">
-    <table class="table">
-        <thead>
-            <th>Product</th>
-            <th>Warehouse</th>
-            <th>Quantity</th>
-        </thead>
-        {% for row in report %}
-        <tr>
-            <td>{{row.product}}</td>
-            <td>{{row.location}}</td>
-            <td>{{row.quantity}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
+  <table class="table">
+    <thead>
+      <th>Product</th>
+      <th>Warehouse</th>
+      <th>Quantity</th>
+    </thead>
+    {% for row in report %}
+    <tr>
+      <td>{{row.product}}</td>
+      <td>{{row.location}}</td>
+      <td>{{row.quantity}}</td>
+    </tr>
+    {% endfor %}
+  </table>
 </div>
 
 {% endblock %}

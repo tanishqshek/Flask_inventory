@@ -1,45 +1,57 @@
-{%extends 'base.html'%}
-
-{% block title %} Locations {% endblock %}
-
-{% block body %}
-<h2 class="text-center " style="background-color: black;padding: 20px 10px 20px 10px; color: white;">Locations</h2>
+{%extends 'base.html'%} {% block title %} Locations {% endblock %} {% block body
+%}
+<h2
+  class="text-center"
+  style="background-color: black; padding: 20px 10px 20px 10px; color: white;"
+>
+  Locations
+</h2>
 
 <div class="container">
-    <form action="/locations" method="post">
-        <div class="form-group">
-            <label for="location-name">
-                Location:
-            </label>
-            <input type="text" class="form-control" name="location-name" id="location-name">
-            <input type="submit" class="form-control btn-primary mt-2" value="Add location">
-        </div>
-    </form>
-    {%if locations|length < 1%}
-    <h4>No locations found please start by adding locations above</h4>
-    {% else %}
-    <table class="table">
-        <thead class="thead thead-dark">
-            <th>
-                ID
-            </th>
-            <th>
-                NAME
-            </th>
-            <th>
-                ACTIONS
-            </th>
-        </thead>
-        {% for location in locations %}
-        <tr>
-            <td>{{location[0]}}</td>
-            <td>{{location[1]}}</td>
-            <td>
-                <a href="/locations/{{location[0]}}/update" class="btn btn-warning">Update</a>
-            </td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </table>
+  <form action="/locations" method="post">
+    <div class="form-group">
+      <label for="location-name">
+        Location:
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        name="location-name"
+        id="location-name"
+      />
+      <input
+        type="submit"
+        class="form-control btn-primary mt-2"
+        value="Add location"
+      />
+    </div>
+  </form>
+  {%if locations|length < 1%}
+  <h4>No locations found please start by adding locations above</h4>
+  {% else %}
+  <table class="table">
+    <thead class="thead thead-dark">
+      <th>
+        ID
+      </th>
+      <th>
+        NAME
+      </th>
+      <th>
+        ACTIONS
+      </th>
+    </thead>
+    {% for location in locations %}
+    <tr>
+      <td>{{location[0]}}</td>
+      <td>{{location[1]}}</td>
+      <td>
+        <a href="/locations/{{location[0]}}/update" class="btn btn-warning"
+          >Update</a
+        >
+      </td>
+    </tr>
+    {% endfor %} {% endif %}
+  </table>
 </div>
 {% endblock %}
